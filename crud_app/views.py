@@ -6,16 +6,16 @@ def menu(request):
 
 
 def check_data(request):
-    return render(check_data, "check_data.html")
+    return render(request, "check_data.html")
 
 
 def delete_data(request):
-    return render(delete_data, "delete_data.html")
+    return render(request, "delete_data.html")
 
 
 def register_user(request):
-    return render(register_user, "register_user")
+    return render(request, "register_user")
 
 
 def update_data(request):
-    return render(update_data, "update_data.html")
+    return render(request, "update_data.html")

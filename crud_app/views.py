@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+from .models import User
 
 
 def menu(request):
@@ -6,7 +8,11 @@ def menu(request):
 
 
 def check_data(request):
-    return render(request, "check_data.html")
+    users = User.objects.all()
+    context = {
+        "users": users
+    }
+    return render(request, "check_data.html", context)
 
 
 def delete_data(request):
@@ -14,7 +20,7 @@ def delete_data(request):
 
 
 def register_user(request):
-    return render(request, "register_user")
+    return render(request, "register_user.html")
 
 
 def update_data(request):

@@ -7,21 +7,18 @@ def menu(request):
     return render(request, "menu.html")
 
 
-def check_data(request):
+def check_user(request):
     users = User.objects.all()
-    context = {
-        "users": users
-    }
-    return render(request, "check_data.html", context)
-
-
-def delete_data(request):
-    return render(request, "delete_data.html")
+    return render(request, "check_user.html", {"users": users})
 
 
 def register_user(request):
     return render(request, "register_user.html")
 
 
-def update_data(request):
-    return render(request, "update_data.html")
+def update_user(request):
+    return render(request, "update_user.html")
+
+
+def delete_user(request):
+    return render(request, "delete_user.html")

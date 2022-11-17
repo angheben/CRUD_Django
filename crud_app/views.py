@@ -7,13 +7,13 @@ def menu(request):
     return render(request, "menu.html")
 
 
+def register_user(request):
+    return render(request, "register_user.html")
+
+
 def check_user(request):
     users = User.objects.all()
     return render(request, "check_user.html", {"users": users})
-
-
-def register_user(request):
-    return render(request, "register_user.html")
 
 
 def update_user(request):

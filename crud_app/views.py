@@ -37,3 +37,17 @@ def specific_user(request, pk):
         "spec_user": spec_user
     }
     return render(request, "specific_user.html", context=context)
+
+
+def save(request):
+    first_name = request.POST.get("First Name")
+    last_name = request.POST.get("Last Name")
+    cpf = request.POST.get("CPF")
+    age = request.POST.get("Age")
+    email = request.POST.get("Email")
+    CustomUser.objects.create(first_name=first_name, last_name=last_name, cpf=cpf, age=age, email=email)
+    users = CustomUser.objects.all()
+    context = {
+        "users": users
+    }
+    return render(request, "register_user.html", context=context)

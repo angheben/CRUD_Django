@@ -32,9 +32,9 @@ def delete_user(request):
 
 
 def specific_user(request, pk):
-    spec_user = CustomUser.objects.get(id=pk)
+    all_data = CustomUser.objects.all()
     context = {
-        "spec_user": spec_user
+        "spec_user": all_data,
     }
     return render(request, "specific_user.html", context=context)
 
@@ -45,9 +45,9 @@ def save(request):
     cpf = request.POST.get("CPF")
     age = request.POST.get("Age")
     email = request.POST.get("Email")
-    CustomUser.objects.create(first_name=first_name, last_name=last_name, cpf=cpf, age=age, email=email)
+    CustomUser.objects.create(f_name=first_name, l_name=last_name, cpf=cpf, age=age, email=email)
     users = CustomUser.objects.all()
     context = {
         "users": users
     }
-    return render(request, "register_user.html", context=context)
+    return render(request, "save.html", context=context)

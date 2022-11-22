@@ -5,6 +5,9 @@
     <title> Specific User </title>
 </head>
 <body>
-    <h1> Inform the data that you want to update </h1>
+    <h1> Select the data that you want to update </h1>
+    {% for user in users %}
+        {{ user.id }} - {{ user.f_name }}
+    {% endfor %}
 </body>
 </html>

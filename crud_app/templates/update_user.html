@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="{% static 'css/update_user_style.css' %}">
 </head>
 <body>
-    <h1> Select a user from the spreadsheet bellow to update a specific data </h1>
-    <table>
+    <h1> Select an ID from the spreadsheet bellow to update a specific record </h1>
+    <table border="1">
         <thead>
             <tr>
+                <th> ID </th>
                 <th> First Name </th>
                 <th> Last Name </th>
                 <th> CPF </th>
@@ -21,7 +22,8 @@
         <tbody>
             {% for user in users %}
                 <tr>
-                    <td> <a href="{% url 'specific_user.html' user.id %}" > {{ user.f_name }} </a> </td>
+                    <td><a href="update_record/{{ user.id }}">{{ user.id }}</a></td>
+                    <td> {{ user.f_name }} </td>
                     <td> {{ user.l_name }} </td>
                     <td> {{ user.cpf }} </td>
                     <td> {{ user.age }} </td>

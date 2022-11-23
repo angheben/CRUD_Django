@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.contrib.messages import constants
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from .models import CustomUser
 
@@ -28,15 +30,16 @@ def update_user(request):
 
 
 def delete_user(request):
-    return render(request, template_name="delete_user.html")
+    return render(request)
 
 
-def specific_user(request, pk):
-    all_data = CustomUser.objects.all()
-    context = {
-        "spec_user": all_data,
-    }
-    return render(request, "specific_user.html", context=context)
+def update_record(request, pk):
+    first_name = request.POST.get("f_name")
+    user = CustomUser.objects.get(pk=pk)
+    user.first_name = first_name
+    user.save()
+    messages.add_message(request, constants.INFO, 'Record Updated Successfully.')
+    return redirect(request, "check_user.html")
 
 
 def save(request):

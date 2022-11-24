@@ -7,7 +7,7 @@
 <body>
     <h1>Update member</h1>
 
-    <form action="update_save/{{ user.id }}" method="POST">
+    <form action="update_save/{{ user.id }}" method="post">
         {% csrf_token %}
         First Name:<br>
         <input name="first" value="{{ user.f_name }}">

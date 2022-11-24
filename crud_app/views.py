@@ -1,9 +1,8 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
-
 from .models import CustomUser
 
 
@@ -44,13 +43,13 @@ def update_record(request, id):
     return HttpResponse(template.render(context, request))
 
 
-def update_save(request):
+def update_save(request, id):
     first_name = request.POST.get('f_name')
     last_name = request.POST.get('l_name')
     user = CustomUser.objects.get(id=id)
     user.f_name = first_name
     user.l_name = last_name
-    return redirect('check_user.html')
+    return HttpResponseRedirect(reverse('check_user.html'))
 
 
 def save(request):

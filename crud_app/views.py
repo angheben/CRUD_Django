@@ -1,7 +1,9 @@
-from django.contrib.messages import constants
+from django.http import HttpResponse, HttpResponseRedirect
+from django.template import loader
 from django.shortcuts import render, redirect
-from django.contrib import messages
+from django.urls import reverse
 from django.shortcuts import get_object_or_404
+
 from .models import CustomUser
 
 
@@ -33,13 +35,22 @@ def delete_user(request):
     return render(request)
 
 
-def update_record(request, pk):
-    first_name = request.POST.get("f_name")
-    user = CustomUser.objects.get(pk=pk)
-    user.first_name = first_name
-    user.save()
-    messages.add_message(request, constants.INFO, 'Record Updated Successfully.')
-    return redirect(request, "check_user.html")
+def update_record(request, id):
+    my_user = CustomUser.objects.get(id=id)
+    template = loader.get_template('update_record.html')
+    context = {
+        'mu_user': my_user
+    }
+    return HttpResponse(template.render(context, request))
+
+
+def update_save(request):
+    first_name = request.POST.get('f_name')
+    last_name = request.POST.get('l_name')
+    user = CustomUser.objects.get(id=id)
+    user.f_name = first_name
+    user.l_name = last_name
+    return redirect('check_user.html')
 
 
 def save(request):

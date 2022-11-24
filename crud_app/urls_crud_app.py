@@ -7,6 +7,7 @@ urlpatterns = [
     path("register_user.html", register_user, name="register_user.html"),
     path("update_user.html", update_user, name="update_user.html"),
     path("delete_user.html", delete_user, name="delete_user.html"),
-    path('update_record/<int:pk>', update_record, name='update_record'),
+    path('update_record/<int:id>', update_record, name='update_record.html'),
+    path('update_record/update_save/<int:id>', update_record, name='update_record.html'),
     path("save.html", save, name="save.html")
 ]

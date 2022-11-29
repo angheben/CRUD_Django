@@ -9,9 +9,9 @@ For each hiperlink in the options above you will move to different HTML pages
 
 In each HTML template I've applied a simple CSS edition, but the focus of that project was to learn the 4 options that a CRUD project teach us
 
-C -> Create -> Post
-R -> Read -> Get
-U -> Update -> Put
-D -> Delete -> Delete
+C -> Create -> Post | 
+R -> Read -> Get | 
+U -> Update -> Put | 
+D -> Delete -> Delete | 
  
 I hope you enjoy!
